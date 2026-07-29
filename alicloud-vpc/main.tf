@@ -81,3 +81,21 @@ resource "alicloud_route_table_attachment" "private" {
   route_table_id = alicloud_route_table.private.id
   vswitch_id     = alicloud_vswitch.private[count.index].id
 }
+
+
+resource "alicloud_log_project" "this" {
+  count        = var.enable_cloudmonitor ? 1 : 0
+  project_name = "${var.project_name}-log-project"
+  description  = "Log project for ${var.project_name}"
+  tags         = var.tags
+}
+
+resource "alicloud_log_store" "this" {
+  count            = var.enable_cloudmonitor ? 1 : 0
+  logstore_name    = "${var.project_name}-log-store"      
+  project_name     = alicloud_log_project.this[0].project_name 
+  retention_period = 30
+  shard_count      = 2
+  auto_split       = true
+  max_split_shard_count = 10
+}

@@ -29,3 +29,9 @@ variable "tags" {
   description = "A map of tags to add to all resources"
   default     = {}
 }
+
+variable "enable_cloudmonitor" {
+  type        = bool
+  description = "Whether to enable CloudMonitor alarms for VPC/NAT resources"
+  default     = false
+}

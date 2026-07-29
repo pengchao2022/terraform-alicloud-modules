@@ -7,6 +7,14 @@ perform as alicloud vpc creation, for example:
 - create private subnets
 - create nat gateway
 - create route tables
+- create cloud mornitoring log group for vpc
+
+Noted: If you need to enable cloud mornitoring You need to enable the service firstly:
+
+just run this command:
+```shell
+aliyun sls OpenSlsService
+```
 ...
 
 ## Usage
@@ -41,6 +49,8 @@ module "maxwell_vpc" {
 
   public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
   private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24"]
+
+  enable_cloudmonitor = true 
 
   tags = {
     Environment = "prod"
