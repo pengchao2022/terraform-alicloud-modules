@@ -3,8 +3,9 @@
 perform as alicloud vpc creation, for example:
 
 - create VPC
-- create public vswitch like public subnet in aws
-- create private vswitch like private subnet in aws
+- create public subnets
+- create private subnets
+- create nat gateway
 - create route tables
 ...
 
@@ -33,7 +34,7 @@ download this module in your lcoal directory and call this module like this:
 module "maxwell_vpc" {
   source = "./modules/alicloud-vpc"
 
-  project_name = "gopay"
+  project_name = "maxwell-vpc"
   vpc_cidr     = "10.0.0.0/16"
 
   availability_zones    = ["cn-hangzhou-i", "cn-hangzhou-j"]
