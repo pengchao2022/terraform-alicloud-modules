@@ -11,19 +11,17 @@ variable "vpc_cidr" {
 
 variable "public_subnet_cidrs" {
   type        = list(string)
-  description = "List of 3 CIDR blocks for public vSwitches"
-  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  description = "List of CIDR blocks for public vSwitches"
 }
 
 variable "private_subnet_cidrs" {
   type        = list(string)
-  description = "List of 3 CIDR blocks for private vSwitches"
-  default     = ["10.0.10.0/24", "10.0.20.0/24", "10.0.30.0/24"]
+  description = "List of CIDR blocks for private vSwitches"
 }
 
 variable "availability_zones" {
   type        = list(string)
-  description = "List of 3 Availability Zones to distribute subnets"
+  description = "List of Availability Zones to distribute subnets"
 }
 
 variable "tags" {
