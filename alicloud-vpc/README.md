@@ -7,13 +7,14 @@ perform as alicloud vpc creation, for example:
 - create private subnets
 - create nat gateway
 - create route tables
-- create cloud mornitoring log group for vpc
+- create cloud mornitoring log group and vpc flow log service for vpc
 
 Noted: If you need to enable cloud mornitoring You need to enable the service firstly:
 
 just run this command:
 ```shell
 aliyun sls OpenSlsService
+aliyun vpc OpenFlowLogService
 ```
 ...
 
