@@ -25,20 +25,21 @@ download this module in your lcoal directory and call this module like this:
 
 ```shell
 
-
-module "security_group_icmp" {
-  source = "./modules/alicloud-sg-icmp"
-
-  security_group_name = "maxwell-sg-icmp"
-  description         = "Allow ICMP Ping"
-  vpc_id              = module.maxwell_vpc.vpc_id
-  allow_icmp_cidrs    = "0.0.0.0/0"
+module "maxwell_frontend_website" {
+  source         = "./modules/alicloud-oss-static-website"
+  bucket_name    = "maxwell-frontend-site-webpage-05210"
+  storage_class  = "Standard"
+  index_document = "index.html"
+  error_document = "index.html" 
 
   tags = {
-    Environment = "dev"
-    Terraform   = "true"
+    Environment = "Dev"
+    Owner       = "Maxwell"
   }
-  
+}
+
+output "frontend_url" {
+  value = module.maxwell_frontend_website.website_endpoint
 }
 
 ```
