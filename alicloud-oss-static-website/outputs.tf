@@ -12,3 +12,4 @@ output "bucket_endpoint" {
   description = "Public URL of this bucket"
   value       = "https://${alicloud_oss_bucket.this.bucket}.oss-${data.alicloud_regions.current.regions[0].id}.aliyuncs.com"
 }
+

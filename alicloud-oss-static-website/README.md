@@ -38,8 +38,6 @@ module "maxwell_frontend_website" {
   }
 }
 
-output "frontend_url" {
-  value = module.maxwell_frontend_website.website_endpoint
 }
 
 ```
