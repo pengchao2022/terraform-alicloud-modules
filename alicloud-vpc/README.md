@@ -40,25 +40,24 @@ download this module in your lcoal directory and call this module like this:
 
 ```shell
 
-module "maxwell_vpc" {
+module "maxwell_vpc_prod" {
   source = "./modules/alicloud-vpc"
 
-  project_name = "maxwell-vpc"
+  project_name = "maxwell-prod"
   vpc_cidr     = "10.0.0.0/16"
 
-  availability_zones    = ["cn-hangzhou-i", "cn-hangzhou-j"]
+  availability_zones    = ["cn-hangzhou-h", "cn-hangzhou-j", "cn-hangzhou-i"]
 
-  public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
-  private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24"]
+  public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24", "10.0.30.0/24"]
 
-  enable_cloudmonitor = true 
+  enable_cloudmonitor = true
 
   tags = {
     Environment = "prod"
     Terraform   = "true"
   }
 }
-
 
 ```
 
