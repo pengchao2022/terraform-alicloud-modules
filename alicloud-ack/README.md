@@ -148,6 +148,13 @@ module "maxwell_ack_dev" {
 
 Useful command to connect ACK on your Mac terminal
 
+- if you don't know the available or full version name for ack then query like this:
+```shell
+# check the ACK kubernetes VERSION
+aliyun oos GetParameter --Name aliyun/services/cs/ManagedKubernetes/KubernetesVersion/1.35_latest
+
+```
+
 - connect to ACK
 ```shell
 aliyun cs DescribeClusterUserKubeconfig --ClusterId c43b7095b36dd439ebc108aa5b1e833e7 | jq -r '.config' > ~/.kube/config
