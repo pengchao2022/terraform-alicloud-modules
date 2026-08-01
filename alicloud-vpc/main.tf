@@ -73,10 +73,30 @@ resource "alicloud_route_table" "private" {
   tags             = merge(var.tags, { Name = "${var.project_name}-private-rt" })
 }
 
+# add default route 0.0.0.0/0 to NAT
+resource "alicloud_route_entry" "private_internet" {
+  route_table_id        = alicloud_route_table.private.id
+  destination_cidrblock = "0.0.0.0/0"
+  nexthop_type          = "NatGateway"
+  nexthop_id            = alicloud_nat_gateway.this.id
+  depends_on            = [alicloud_eip_association.this]
+}
+
+
 resource "alicloud_route_table_attachment" "private" {
   count          = length(var.private_subnet_cidrs)
   route_table_id = alicloud_route_table.private.id
   vswitch_id     = alicloud_vswitch.private[count.index].id
+  depends_on     = [alicloud_route_entry.private_internet]
+}
+
+# config snat 
+resource "alicloud_snat_entry" "private_snat" {
+  count             = length(var.private_subnet_cidrs)
+  snat_table_id     = alicloud_nat_gateway.this.snat_table_ids
+  source_vswitch_id = alicloud_vswitch.private[count.index].id
+  snat_ip           = alicloud_eip.this.ip_address
+  depends_on        = [alicloud_eip_association.this]
 }
 
 
@@ -226,7 +246,7 @@ resource "alicloud_vpc_flow_log" "this" {
   resource_type     = "VPC"
   resource_id       = alicloud_vpc.this.id
   traffic_type      = "Drop"  # reject network traffic
-  project_name  = alicloud_log_project.this[0].project_name
+  project_name      = alicloud_log_project.this[0].project_name
   log_store_name    = alicloud_log_store.this[0].logstore_name
   flow_log_name     = "${var.project_name}-flow-log"
   description       = "Flow log capturing only rejected traffic for VPC"
