@@ -13,8 +13,8 @@ brew install aliyun-cli
 ```shell
 llen@192 terraform-alicloud-modules % aliyun configure --profile prod
 Configuring profile 'prod' in 'AK' authenticate mode...
-Access Key Id []: LTAI5t9MDgS5SpTYwFE3GqUg
-Access Key Secret []: LtjZKRm1eY3NmcdWvMX6w5dv8E3ler
+Access Key Id []: your access key ID
+Access Key Secret []: your access key secret
 Default Region Id []: cn-hangzhou
 Default Output Format [json]: json (Only support json)
 Default Language [zh|en] en: 
