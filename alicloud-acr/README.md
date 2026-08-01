@@ -18,11 +18,11 @@ docker login --username=maxwell@1921592033864229 registry.cn-hangzhou.aliyuncs.c
    - web-frontend is the registry name
 
 ```shell
-  docker buildx build \
-  --platform linux/amd64 \
-  -t registry.cn-hangzhou.aliyuncs.com/maxwell-mage-0521/web-frontend:v1.0.0 \
-  --push \
-  .
+docker buildx build \
+--platform linux/amd64 \
+-t registry.cn-hangzhou.aliyuncs.com/maxwell-mage-0521/web-frontend:v1.0.0 \
+--push \
+.
 
 ```
 You can also make a test on your local Mac
