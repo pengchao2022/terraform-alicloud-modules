@@ -150,7 +150,7 @@ Useful command to connect ACK on your Mac terminal
 
 - if you don't know the available or full version name for ack then query like this:
 ```shell
-# check the ACK kubernetes VERSION
+
 aliyun oos GetParameter --Name aliyun/services/cs/ManagedKubernetes/KubernetesVersion/1.35_latest
 
 ```
