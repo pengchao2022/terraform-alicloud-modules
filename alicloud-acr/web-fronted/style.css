@@ -1,0 +1,270 @@
+/* ========== 全局重置 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #fff0f5;  /* 🔧 粉色背景（lavender blush） */
+    color: #4a3a4a;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ========== 导航栏 ========== */
+.navbar {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(180, 120, 140, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 240, 245, 0.85);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ff6b8a, #ff3b6f);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #7a5a6a;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff3b6f;
+}
+
+/* ========== 按钮 ========== */
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b8a, #ff3b6f);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(255, 59, 111, 0.35);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(180, 120, 140, 0.3);
+    padding: 12px 28px;
+    border-radius: 40px;
+    color: #4a3a4a;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 59, 111, 0.08);
+    border-color: #ff3b6f;
+}
+
+/* ========== Hero 区域 ========== */
+.hero {
+    padding: 80px 0 60px;
+}
+
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #3a2a3a;
+}
+
+.hero-content .highlight {
+    background: linear-gradient(135deg, #ff6b8a, #ff3b6f);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 20px;
+    color: #7a5a6a;
+    max-width: 520px;
+    margin: 0 auto 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(180, 120, 140, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: #3a2a3a;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #9a7a8a;
+}
+
+/* ========== Features ========== */
+.features {
+    padding: 80px 0;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 48px;
+    color: #3a2a3a;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(200, 160, 175, 0.2);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.feature-card .icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #3a2a3a;
+}
+
+.feature-card p {
+    color: #7a5a6a;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ========== 页脚 ========== */
+footer {
+    padding: 40px 0;
+    border-top: 1px solid rgba(180, 120, 140, 0.15);
+    text-align: center;
+    color: #9a7a8a;
+    font-size: 14px;
+}
+
+footer .container span {
+    color: #ff3b6f;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .hero-stats {
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons button {
+        width: 100%;
+        max-width: 280px;
+    }
+}
