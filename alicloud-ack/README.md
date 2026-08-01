@@ -1,6 +1,12 @@
 ## Function
 
-perform as alicloud kubernetes creation
+perform as alicloud kubernetes creation, this ACK module depends on VPC module
+
+when you plan to create ACK please plan for the network as following:
+
+- VPC CIDR (physical network) and Pod CIDR(terway switch) can use the VPC module output value
+
+- Service CIDR(cluster internal service using ) must be totally different network with VPC CIDR
 
 
 ## Usage
@@ -31,11 +37,13 @@ module "maxwell_ack_prod" {
 
   region_id       = "cn-hangzhou"
   cluster_name    = "maxwell-prod-nginx"
+  k8s_version     = "1.35.2-aliyun.1"
   cluster_spec    = "ack.pro.small"
 
   vpc_id                    = module.maxwell_vpc_prod.vpc_id
   node_vswitch_ids          = module.maxwell_vpc_prod.private_vswitch_ids
   terway_vswitch_ids        = module.maxwell_vpc_prod.private_vswitch_ids
+  service_cidr              = "172.19.0.0/20"
   worker_instance_types     = ["ecs.c6.xlarge"]
   default_node_desired_size = 2  
   autoscale_min_size        = 0  
@@ -74,7 +82,9 @@ module "maxwell_ack_prod" {
       "config" = "",
     }
   ]
-  
+  depends_on = [
+    module.maxwell_vpc_prod
+  ]
 }
 
 # ack using terway and alicloud alb
@@ -83,11 +93,13 @@ module "maxwell_ack_dev" {
 
   region_id       = "cn-hangzhou"
   cluster_name    = "maxwell-dev-alb"
+  k8s_version     = "1.36.1-aliyun.1"
   cluster_spec    = "ack.pro.small"
 
   vpc_id                    = module.maxwell_vpc_prod.vpc_id
   node_vswitch_ids          = module.maxwell_vpc_prod.private_vswitch_ids
   terway_vswitch_ids        = module.maxwell_vpc_prod.private_vswitch_ids
+  service_cidr              = "172.19.0.0/20"
   worker_instance_types     = ["ecs.c6.xlarge"]
   default_node_desired_size = 2  
   autoscale_min_size        = 0  
@@ -125,7 +137,11 @@ module "maxwell_ack_dev" {
       "config" = "",
     }
   ]
+  depends_on = [
+    module.maxwell_vpc_prod
+  ]
 }
+
 
 
 ```

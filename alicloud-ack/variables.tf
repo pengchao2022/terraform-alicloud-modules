@@ -4,7 +4,11 @@ variable "region_id" {
   default = "cn-hangzhou"
 }
 
-
+variable "k8s_version" {
+  description = "The Kubernetes version of the ACK cluster"
+  type        = string
+  default     = "1.35.2-aliyun.1" 
+}
 
 variable "cluster_spec" {
   description = "The cluster specification of kubernetes cluster, Valid values: ack.standard, ack.pro.small."
@@ -34,6 +38,12 @@ variable "terway_vswitch_ids" {
   description = "List of existing pod vswitch ids for terway"
   type        = list(string)
   default     = []
+}
+
+variable "service_cidr" {
+  type        = string
+  description = "The CIDR block for K8s Services (ClusterIP). Must not overlap with VPC CIDR or Pod CIDR."
+  default     = "172.19.0.0/20" 
 }
 
 variable "worker_instance_types" {
@@ -111,3 +121,4 @@ variable "cluster_addons" {
     } 
   ]
 }
+

@@ -30,11 +30,12 @@ resource "alicloud_cs_managed_kubernetes" "default" {
   depends_on = [data.alicloud_ack_service.open]
 
   name                         = var.cluster_name
+  version                      = var.k8s_version
   cluster_spec                 = var.cluster_spec
   vswitch_ids                  = var.node_vswitch_ids
   pod_vswitch_ids              = var.terway_vswitch_ids
-  new_nat_gateway              = true
-  service_cidr                 = "10.11.0.0/16"
+  new_nat_gateway              = false
+  service_cidr                 = var.service_cidr
   slb_internet_enabled         = true
   enable_rrsa                  = true
   
