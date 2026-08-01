@@ -18,7 +18,7 @@ docker login --username=maxwell@1921592033864229 registry.cn-hangzhou.aliyuncs.c
    - web-frontend is the registry name
 
 ```shell
-llen@192 web-fronted % docker buildx build \
+  docker buildx build \
   --platform linux/amd64 \
   -t registry.cn-hangzhou.aliyuncs.com/maxwell-mage-0521/web-frontend:v1.0.0 \
   --push \
